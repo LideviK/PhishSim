@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: Better123
+      POSTGRES_DB: PhishSim
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pgdata_v_hf:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: /app/scripts/runserver.sh
+    environment:
+      ENV: local
+      WERKZEUG_DEBUG_PIN: 'off'
+
+      DB_USER: admin
+      DB_PASSWORD: Better123
+      DB_NAME: PhishSim
+      DB_PORT: 5432
+
+      # sendgrid config
+      EMAIL_BACKEND: 
+      SENDGRID_API_KEY: 
+      SENDGRID_SANDBOX_MODE_IN_DEBUG: "False"
+      SENDGRID_ECHO_TO_STDOUT: "True"
+    volumes:
+      - ./config/:/app/config/
+      - ./v1/:/app/v1/
+      - ./scripts/:/app/scripts/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    links:
+      - db:db
+
+volumes: 
+  pgdata_v_hf:
+    external: true

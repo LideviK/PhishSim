@@ -1,0 +1,14 @@
+.venv
+.env
+v1/user/models/__pycache__
+v1/user/__pycache__
+v1/user/migrations
+v1/company/models/__pycache__
+v1/company/migrations
+v1/company/__pycache__
+v1/accounts/models/common/__pycache__
+v1/accounts/models/__pycache__
+v1/accounts/migrations
+v1/accounts/__pycache__
+config/__pycache__
+config/settings/__pycache__

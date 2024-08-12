@@ -1,0 +1,15 @@
+{% autoescape off %}
+
+Welcome to {{ current_site.name }}! We are excited that you have chosen to use our Compliance & Security.
+
+Please go to {{ activate_url }} to activate your account.
+
+The {{ current_site.name }} will in less than 2 minutes  simplify compliance and security for your AWS. Once activated, instantly see your compliance summary by connecting to AWS, with read-only security audit permission. You may subscribe and access SOC 2 and more compliance benchmarks and share those with your customers.
+
+You can also contact us with questions or product feedback by emailing support@{{ current_site.domain }}.
+
+Thanks! We look forward to working with you.
+
+{{ current_site.name }} Product Management Team.
+
+{% endautoescape %}
